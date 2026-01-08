@@ -36,8 +36,8 @@ const SmoothScroll = ({ children }: SmoothScrollProps) => {
       smootherRef.current = ScrollSmoother.create({
         wrapper: wrapperRef.current,
         content: contentRef.current,
-        smooth: 1.2, // Reduced smooth scrolling intensity for better performance
-        effects: false, // Disabled data-speed effects to improve performance
+        smooth: 1.5, // Smooth scrolling intensity (1 = medium, 2 = strong)
+        effects: true, // Enable data-speed and data-lag effects
         normalizeScroll: true, // Prevents address bar hiding issues on mobile
         smoothTouch: 0.1, // Light smooth scrolling on touch devices
       });

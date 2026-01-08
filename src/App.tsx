@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
 import PasswordReset from './components/PasswordReset';
 import ResetPassword from './components/ResetPassword';
 import VerifyEmail from './components/VerifyEmail';
@@ -20,7 +21,7 @@ import SpeakersPage from './pages/SpeakersPage';
 import SponsorsPage from './pages/SponsorsPage';
 import PassesPage from './pages/PassesPage';
 import AccommodationPage from './pages/AccommodationPage';
-import LaunchPage from './pages/LaunchPage';
+import DashboardPage from './pages/DashboardPage';
 
 import './index.css';
 
@@ -33,6 +34,8 @@ const menuItems = [
   { label: 'Sponsors', ariaLabel: 'Go to Sponsors', link: '/sponsors' },
   { label: 'Passes', ariaLabel: 'Go to Passes', link: '/passes' },
   { label: 'Stay', ariaLabel: 'Go to Accommodation', link: '/accommodation' },
+  { label: 'Login', ariaLabel: 'Go to Login', link: '/login' },
+  { label: 'Dashboard', ariaLabel: 'Go to Dashboard', link: '/dashboard' },
 ];
 
 const socialItems = [
@@ -80,16 +83,17 @@ const AppContent = () => {
             <Routes>
               {/* Main Pages */}
               <Route path="/" element={<Home />} />
-              <Route path="/launch" element={<LaunchPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/speakers" element={<SpeakersPage />} />
               <Route path="/sponsors" element={<SponsorsPage />} />
               <Route path="/passes" element={<PassesPage />} />
               <Route path="/accommodation" element={<AccommodationPage />} />
-
+              <Route path="/dashboard" element={<DashboardPage />} />
+              
               {/* Auth Pages */}
               <Route path="/register" element={<RegisterForm />} />
+              <Route path="/login" element={<LoginForm />} />
               <Route path="/verify-email" element={<VerifyEmail />} />
               <Route path="/forgot-password" element={<PasswordReset />} />
               <Route path="/reset-password" element={<ResetPassword />} />
@@ -117,49 +121,7 @@ function App() {
 
   return (
     <Router>
-      {loading && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: '#0f0f23',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontSize: '24px',
-          zIndex: 9999
-        }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '48px', marginBottom: '20px' }}>🚀</div>
-            <div>Loading GIC 2026...</div>
-            <div style={{
-              width: '200px',
-              height: '4px',
-              backgroundColor: '#333',
-              marginTop: '20px',
-              borderRadius: '2px',
-              overflow: 'hidden'
-            }}>
-              <div style={{
-                height: '100%',
-                backgroundColor: '#8B7BB5',
-                borderRadius: '2px',
-                animation: 'loading-bar 2s ease-in-out infinite'
-              }}></div>
-            </div>
-          </div>
-          <style>{`
-            @keyframes loading-bar {
-              0% { width: 0%; }
-              50% { width: 100%; }
-              100% { width: 0%; }
-            }
-          `}</style>
-        </div>
-      )}
+      {loading && <Loader />}
       {!loading && <AppContent />}
     </Router>
   );

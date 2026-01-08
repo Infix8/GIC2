@@ -2,53 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ensure basic visibility */
-body {
-  background-color: #0f0f23 !important;
-  color: white !important;
-  min-height: 100vh !important;
-}
-
-#root {
-  min-height: 100vh !important;
-}
-
-/* ===== Performance Optimizations ===== */
-* {
-  /* Optimize scrolling performance */
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Optimize animations */
-.animate-fade-up,
-.animate-on-scroll {
-  will-change: transform, opacity;
-}
-
-/* Reduce paint on scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Optimize transforms for better performance */
-.transform {
-  will-change: transform;
-}
-
-/* Shimmer animation for launch button */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 3s ease-in-out infinite;
-}
-
 /* ===== GSAP ScrollSmoother Styles ===== */
 #smooth-wrapper {
     overflow: hidden;
