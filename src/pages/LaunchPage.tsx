@@ -151,10 +151,8 @@ const LaunchPage = () => {
                }}></div>
 
           {/* Button content */}
-          <span className="relative z-10 flex items-center gap-5 font-bold tracking-wide" role="button" aria-label="Enter Global Innovators Conclave 2026">
-            <span className="text-4xl md:text-5xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">✨</span>
-            <span className="text-lg md:text-xl font-medium">Enter GIC 2026</span>
-            <span className="text-4xl md:text-5xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">🚀</span>
+          <span className="relative z-10 flex items-center font-bold tracking-wider text-white" role="button" aria-label="Enter Global Innovators Conclave 2026">
+            <span className="text-xl md:text-2xl font-extrabold">GIC 2026</span>
           </span>
 
           {/* Elegant border ring */}
