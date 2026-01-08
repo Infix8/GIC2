@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 
 const LaunchPage = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Animate elements on mount
@@ -39,69 +40,55 @@ const LaunchPage = () => {
   }, []);
 
   const handleLaunch = () => {
-    // Enhanced click animation sequence
-    const button = document.querySelector('.launch-button');
-    const title = document.querySelector('.launch-title');
-    const subtitle = document.querySelector('.launch-subtitle');
+    setIsLoading(true);
 
-    // Create a timeline for the launch sequence
-    const tl = gsap.timeline();
-
-    // Phase 1: Button excitement animation
-    tl.to('.launch-button', {
-      scale: 1.1,
-      duration: 0.2,
-      ease: 'back.out(1.7)',
-      boxShadow: '0 30px 60px rgba(139, 92, 246, 0.8), 0 20px 40px rgba(139, 92, 246, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
-    })
-    .to('.launch-button', {
-      scale: 0.95,
-      duration: 0.1,
-      ease: 'power2.in',
-    }, '-=0.1')
-    .to('.launch-button', {
-      scale: 1.05,
-      duration: 0.3,
-      ease: 'elastic.out(1, 0.3)',
-      background: 'linear-gradient(135deg, #a855f7 0%, #c084fc 50%, #ddd6fe 100%)',
-    });
-
-    // Phase 2: Page elements fade and transform
-    tl.to([title, subtitle], {
-      opacity: 0,
-      y: -30,
-      scale: 0.9,
-      duration: 0.8,
-      ease: 'power3.inOut',
-    }, '-=0.5');
-
-    // Phase 3: Background transition
-    tl.to('.launch-page-bg', {
-      scale: 1.1,
-      opacity: 0.8,
-      duration: 1,
-      ease: 'power2.inOut',
-    }, '-=0.6');
-
-    // Phase 4: Final button expansion and navigation
-    tl.to('.launch-button', {
-      scale: 2,
-      opacity: 0.9,
-      duration: 0.6,
-      ease: 'power2.inOut',
-      onComplete: () => {
-        // Navigate to the home page after animation
-        setTimeout(() => {
-          navigate('/');
-        }, 200);
-      }
-    }, '-=0.3');
+    // Add a loading animation before navigation
+    setTimeout(() => {
+      navigate('/');
+    }, 3000); // 3 second loading animation
   };
 
   return (
     <div className="launch-page-bg min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center relative overflow-hidden">
       {/* Subtle background overlay */}
       <div className="absolute inset-0 bg-black/10"></div>
+
+      {/* Loading Animation Overlay */}
+      {isLoading && (
+        <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center z-50">
+          {/* SMEC-style loading animation */}
+          <div className="text-center">
+            {/* Animated logo or text */}
+            <div className="mb-8">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 animate-pulse">
+                SMEC
+              </h2>
+              <div className="flex justify-center space-x-2">
+                <div className="w-3 h-3 bg-violet-400 rounded-full animate-bounce"></div>
+                <div className="w-3 h-3 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-3 h-3 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              </div>
+            </div>
+
+            {/* Loading text */}
+            <p className="text-violet-200 text-lg animate-pulse">
+              Launching Global Innovators Conclave 2026...
+            </p>
+
+            {/* Progress bar */}
+            <div className="mt-8 w-64 mx-auto">
+              <div className="bg-gray-700 rounded-full h-2 overflow-hidden">
+                <div className="bg-gradient-to-r from-violet-400 to-purple-400 h-full rounded-full animate-pulse"
+                     style={{
+                       animation: 'loading-bar 3s ease-in-out',
+                       width: '100%'
+                     }}>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated gradient orbs */}
@@ -114,7 +101,7 @@ const LaunchPage = () => {
       <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
         {/* Main Title */}
         <h1 className="launch-title text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
-          <span className="bg-gradient-to-r from-violet-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-gray-200 via-gray-100 to-white bg-clip-text text-transparent drop-shadow-lg">
             LAUNCH
           </span>
         </h1>
@@ -127,36 +114,31 @@ const LaunchPage = () => {
         {/* Launch Button */}
         <button
           onClick={handleLaunch}
-          className="launch-button group relative inline-flex items-center justify-center px-20 py-10 text-2xl md:text-3xl font-bold text-white rounded-full transition-all duration-700 transform hover:scale-105 border-0 z-30 overflow-hidden"
+          disabled={isLoading}
+          className="bg-violet-600 hover:bg-violet-700 disabled:bg-violet-800 disabled:cursor-not-allowed text-white font-bold text-xl md:text-2xl px-12 py-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg border-0"
           style={{
-            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.9) 0%, rgba(168, 85, 247, 0.95) 30%, rgba(196, 181, 253, 0.9) 70%, rgba(139, 92, 246, 0.9) 100%)',
-            boxShadow: '0 20px 40px rgba(139, 92, 246, 0.4), 0 10px 20px rgba(168, 85, 247, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.1)',
-            textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
+            backgroundColor: isLoading ? '#5b21b6' : '#7c3aed',
+            borderRadius: '8px'
+          }}
+          onMouseEnter={(e) => {
+            if (!isLoading) {
+              e.currentTarget.style.backgroundColor = '#6d28d9';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!isLoading) {
+              e.currentTarget.style.backgroundColor = '#7c3aed';
+            }
           }}
         >
-          {/* Elegant glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-300/40 via-purple-300/50 to-indigo-300/40 rounded-full blur-2xl opacity-70 group-hover:opacity-100 transition-all duration-700"></div>
-
-          {/* Subtle inner highlight */}
-          <div className="absolute inset-2 bg-gradient-to-br from-white/15 via-transparent to-white/5 rounded-full"></div>
-
-          {/* Sophisticated shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"
-               style={{
-                 background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-                 backgroundSize: '200% 100%',
-                 animation: 'shimmer 2s infinite'
-               }}></div>
-
-          {/* Button content */}
-          <span className="relative z-10 flex items-center font-bold tracking-wider text-white" role="button" aria-label="Enter Global Innovators Conclave 2026">
-            <span className="text-xl md:text-2xl font-extrabold">GIC 2026</span>
-          </span>
-
-          {/* Elegant border ring */}
-          <div className="absolute inset-0 rounded-full border border-white/20 group-hover:border-white/40 transition-colors duration-700"></div>
+          {isLoading ? (
+            <div className="flex items-center space-x-2">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>Loading...</span>
+            </div>
+          ) : (
+            'GIC 2026'
+          )}
         </button>
 
         {/* Footer text */}
