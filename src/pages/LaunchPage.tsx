@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 
 const LaunchPage = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Animate elements on mount
     const tl = gsap.timeline();
@@ -43,8 +46,8 @@ const LaunchPage = () => {
       yoyo: true,
       repeat: 1,
       onComplete: () => {
-        // Redirect to the main website
-        window.location.href = 'http://www.globalinnovatorsconclave.in';
+        // Navigate to the home page
+        navigate('/');
       }
     });
   };
