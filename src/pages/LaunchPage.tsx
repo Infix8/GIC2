@@ -50,8 +50,13 @@ const LaunchPage = () => {
 
   return (
     <div className="launch-page-bg min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center relative overflow-hidden">
-      {/* Subtle background overlay */}
-      <div className="absolute inset-0 bg-black/10"></div>
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
 
       {/* Loading Animation Overlay */}
       {isLoading && (
@@ -99,6 +104,8 @@ const LaunchPage = () => {
 
       {/* Content */}
       <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
+        {/* Debug: Make sure content is visible */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20">
         {/* Main Title */}
         <h1 className="launch-title text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
           <span className="bg-gradient-to-r from-gray-200 via-gray-100 to-white bg-clip-text text-transparent drop-shadow-lg">
@@ -145,6 +152,7 @@ const LaunchPage = () => {
         <p className="mt-12 text-violet-300/60 text-sm">
           Experience the future of innovation
         </p>
+        </div>
       </div>
 
       {/* Additional decorative elements */}
