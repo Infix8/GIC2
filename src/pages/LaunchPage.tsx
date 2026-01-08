@@ -54,8 +54,8 @@ const LaunchPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center relative overflow-hidden">
-      {/* Enhanced background overlay for better contrast */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
+      {/* Subtle background overlay */}
+      <div className="absolute inset-0 bg-black/10"></div>
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated gradient orbs */}
@@ -81,11 +81,12 @@ const LaunchPage = () => {
         {/* Launch Button */}
         <button
           onClick={handleLaunch}
-          className="launch-button group relative inline-flex items-center justify-center px-16 py-8 text-2xl md:text-3xl font-bold text-white bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:via-purple-500 hover:to-indigo-500 rounded-3xl shadow-2xl hover:shadow-violet-500/50 hover:shadow-purple-500/30 transition-all duration-500 transform hover:scale-110 border-2 border-violet-300/50 hover:border-violet-200/80 animate-pulse hover:animate-none z-20"
+          className="launch-button group relative inline-flex items-center justify-center px-16 py-8 text-2xl md:text-3xl font-bold text-white bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:via-purple-500 hover:to-indigo-500 rounded-3xl shadow-2xl hover:shadow-violet-500/50 hover:shadow-purple-500/30 transition-all duration-500 transform hover:scale-110 border-2 border-violet-300/50 hover:border-violet-200/80 animate-pulse hover:animate-none z-30"
           style={{
             background: 'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #6366f1 100%)',
-            boxShadow: '0 20px 40px rgba(139, 92, 246, 0.4), 0 10px 20px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+            boxShadow: '0 25px 50px rgba(139, 92, 246, 0.6), 0 15px 30px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
+            border: '3px solid rgba(196, 181, 253, 0.6)',
           }}
         >
           {/* Enhanced glow effect */}
