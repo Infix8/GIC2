@@ -115,7 +115,7 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-28 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 w-full">
             {/* Event Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -139,7 +139,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                className="mb-8 sm:mb-10 md:mb-12 flex items-center gap-4 group pb-4 sm:pb-6"
+                className="mb-8 sm:mb-10 md:mb-12 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 group pb-4 sm:pb-6"
               >
                 <motion.div
                   whileHover={{ scale: 1.1 }}
@@ -148,14 +148,13 @@ const HeroSection = () => {
                   <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white flex-shrink-0 transition-colors duration-300 group-hover:text-gic-lavender" />
                 </motion.div>
                 <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold whitespace-nowrap flex items-center"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left"
                   style={{
                     fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                     fontStyle: 'normal',
                     letterSpacing: '-0.02em',
-                    lineHeight: '1.05',
+                    lineHeight: '1.1',
                     fontWeight: 800,
-                    gap: '0.25rem',
                   }}
                 >
                   {['Global', 'Innovators', 'Conclave', '2026'].map((word, index) => (
@@ -168,14 +167,10 @@ const HeroSection = () => {
                         duration: 0.3, 
                         ease: [0.4, 0, 0.2, 1] 
                       }}
-                      className="inline-block text-white hover:text-gic-lavender cursor-pointer event-word-glow py-1 rounded transition-all duration-300"
+                      className="inline-block text-white hover:text-gic-lavender cursor-pointer event-word-glow py-1 px-2 rounded transition-all duration-300"
                       style={{
                         transformOrigin: 'center',
                         display: 'inline-block',
-                        paddingLeft: '0.375rem', // 25% reduction from 0.5rem (px-2)
-                        paddingRight: '0.375rem',
-                        marginLeft: index === 0 ? '0' : '0.09375rem', // 25% reduction from 0.125rem (mx-0.5)
-                        marginRight: index === 3 ? '0' : '0.09375rem',
                       }}
                     >
                       {word}
