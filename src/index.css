@@ -38,16 +38,6 @@ html {
   animation: shimmer 3s ease-in-out infinite;
 }
 
-/* Loading bar animation */
-@keyframes loading-bar {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
 /* ===== GSAP ScrollSmoother Styles ===== */
 #smooth-wrapper {
     overflow: hidden;
