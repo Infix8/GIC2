@@ -179,8 +179,8 @@ const HeroSection = () => {
                 </h2>
               </motion.div>
 
-              {/* Main Title */}
-              <div className="space-y-4">
+            {/* Main Title */}
+            <div className="space-y-4 w-full overflow-hidden">
               
               <AnimatePresence mode="wait">
                 <motion.div
@@ -189,33 +189,35 @@ const HeroSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+                  className="w-full"
                 >
-                  <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight"
+                  <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight w-full"
                     style={{
                       fontStyle: 'normal',
-                      transform: 'skewX(-8deg)',
                       fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                       fontWeight: 700,
                     }}
                   >
-                    <span 
-                      className="bg-gradient-to-r from-gic-lavender via-gic-violet via-primary to-gic-lavender bg-clip-text text-transparent animate-gradient"
+                    <span
+                      className="bg-gradient-to-r from-gic-lavender via-gic-violet via-primary to-gic-lavender bg-clip-text text-transparent animate-gradient block overflow-wrap-anywhere"
                       style={{
                         textShadow: '0 0 20px rgba(139, 123, 181, 0.3), 0 0 40px rgba(169, 155, 212, 0.2), 0 0 60px rgba(139, 123, 181, 0.1)',
                         filter: 'drop-shadow(0 0 8px rgba(169, 155, 212, 0.25))',
-                        fontStyle: 'italic',
-                        transform: 'skewX(-8deg)',
+                        fontStyle: 'normal',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'anywhere',
                       }}
                     >
                       {slide.highlight}
                     </span>
                   </h1>
-                  <p className="text-gic-lavender/80 text-lg sm:text-xl mt-4 leading-relaxed max-w-xl"
+                  <p className="text-gic-lavender/80 text-base sm:text-lg lg:text-xl mt-4 leading-relaxed max-w-xs sm:max-w-md lg:max-w-xl xl:max-w-2xl w-full overflow-wrap-anywhere"
                     style={{
                       fontStyle: 'normal',
-                      transform: 'skewX(-6deg)',
                       fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                       fontWeight: 400,
+                      wordBreak: 'break-word',
+                      overflowWrap: 'anywhere',
                     }}
                   >
                     {slide.title}
