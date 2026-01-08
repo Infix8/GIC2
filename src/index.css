@@ -24,6 +24,20 @@ html {
   will-change: transform;
 }
 
+/* Shimmer animation for launch button */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
 /* ===== GSAP ScrollSmoother Styles ===== */
 #smooth-wrapper {
     overflow: hidden;

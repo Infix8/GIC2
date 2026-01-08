@@ -39,21 +39,67 @@ const LaunchPage = () => {
   }, []);
 
   const handleLaunch = () => {
-    // Add click animation
-    gsap.to('.launch-button', {
-      scale: 1.05,
+    // Enhanced click animation sequence
+    const button = document.querySelector('.launch-button');
+    const title = document.querySelector('.launch-title');
+    const subtitle = document.querySelector('.launch-subtitle');
+
+    // Create a timeline for the launch sequence
+    const tl = gsap.timeline();
+
+    // Phase 1: Button excitement animation
+    tl.to('.launch-button', {
+      scale: 1.1,
+      duration: 0.2,
+      ease: 'back.out(1.7)',
+      boxShadow: '0 30px 60px rgba(139, 92, 246, 0.8), 0 20px 40px rgba(139, 92, 246, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+    })
+    .to('.launch-button', {
+      scale: 0.95,
       duration: 0.1,
-      yoyo: true,
-      repeat: 1,
-      onComplete: () => {
-        // Navigate to the home page
-        navigate('/');
-      }
+      ease: 'power2.in',
+    }, '-=0.1')
+    .to('.launch-button', {
+      scale: 1.05,
+      duration: 0.3,
+      ease: 'elastic.out(1, 0.3)',
+      background: 'linear-gradient(135deg, #a855f7 0%, #c084fc 50%, #ddd6fe 100%)',
     });
+
+    // Phase 2: Page elements fade and transform
+    tl.to([title, subtitle], {
+      opacity: 0,
+      y: -30,
+      scale: 0.9,
+      duration: 0.8,
+      ease: 'power3.inOut',
+    }, '-=0.5');
+
+    // Phase 3: Background transition
+    tl.to('.launch-page-bg', {
+      scale: 1.1,
+      opacity: 0.8,
+      duration: 1,
+      ease: 'power2.inOut',
+    }, '-=0.6');
+
+    // Phase 4: Final button expansion and navigation
+    tl.to('.launch-button', {
+      scale: 2,
+      opacity: 0.9,
+      duration: 0.6,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        // Navigate to the home page after animation
+        setTimeout(() => {
+          navigate('/');
+        }, 200);
+      }
+    }, '-=0.3');
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center relative overflow-hidden">
+    <div className="launch-page-bg min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center relative overflow-hidden">
       {/* Subtle background overlay */}
       <div className="absolute inset-0 bg-black/10"></div>
       {/* Background Effects */}
@@ -81,34 +127,38 @@ const LaunchPage = () => {
         {/* Launch Button */}
         <button
           onClick={handleLaunch}
-          className="launch-button group relative inline-flex items-center justify-center px-16 py-8 text-2xl md:text-3xl font-bold text-white bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:via-purple-500 hover:to-indigo-500 rounded-3xl shadow-2xl hover:shadow-violet-500/50 hover:shadow-purple-500/30 transition-all duration-500 transform hover:scale-110 border-2 border-violet-300/50 hover:border-violet-200/80 animate-pulse hover:animate-none z-30"
+          className="launch-button group relative inline-flex items-center justify-center px-20 py-10 text-2xl md:text-3xl font-bold text-white rounded-full transition-all duration-700 transform hover:scale-105 border-0 z-30 overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #6366f1 100%)',
-            boxShadow: '0 25px 50px rgba(139, 92, 246, 0.6), 0 15px 30px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-            border: '3px solid rgba(196, 181, 253, 0.6)',
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.9) 0%, rgba(168, 85, 247, 0.95) 30%, rgba(196, 181, 253, 0.9) 70%, rgba(139, 92, 246, 0.9) 100%)',
+            boxShadow: '0 20px 40px rgba(139, 92, 246, 0.4), 0 10px 20px rgba(168, 85, 247, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.1)',
+            textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
           }}
         >
-          {/* Enhanced glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400 rounded-3xl blur-xl opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
+          {/* Elegant glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-300/40 via-purple-300/50 to-indigo-300/40 rounded-full blur-2xl opacity-70 group-hover:opacity-100 transition-all duration-700"></div>
 
-          {/* Inner glow */}
-          <div className="absolute inset-1 bg-gradient-to-r from-white/20 to-transparent rounded-2xl"></div>
+          {/* Subtle inner highlight */}
+          <div className="absolute inset-2 bg-gradient-to-br from-white/15 via-transparent to-white/5 rounded-full"></div>
+
+          {/* Sophisticated shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"
+               style={{
+                 background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+                 backgroundSize: '200% 100%',
+                 animation: 'shimmer 2s infinite'
+               }}></div>
 
           {/* Button content */}
-          <span className="relative z-10 flex items-center gap-4 font-extrabold tracking-wide" role="button" aria-label="Launch Global Innovators Conclave Experience">
-            <span className="text-3xl md:text-4xl animate-bounce" aria-hidden="true">🚀</span>
-            <span className="drop-shadow-lg">Enter GIC 2026</span>
-            <span className="text-3xl md:text-4xl animate-pulse" aria-hidden="true">✨</span>
+          <span className="relative z-10 flex items-center gap-5 font-bold tracking-wide" role="button" aria-label="Enter Global Innovators Conclave 2026">
+            <span className="text-4xl md:text-5xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">✨</span>
+            <span className="text-lg md:text-xl font-medium">Enter GIC 2026</span>
+            <span className="text-4xl md:text-5xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">🚀</span>
           </span>
 
-          {/* Animated border with multiple layers */}
-          <div className="absolute inset-0 rounded-3xl border-2 border-violet-300/60 animate-pulse"></div>
-          <div className="absolute inset-1 rounded-2xl border border-white/30"></div>
-
-          {/* Sparkle effects */}
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-300 rounded-full animate-ping opacity-75"></div>
-          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-blue-300 rounded-full animate-ping opacity-60 animation-delay-500"></div>
+          {/* Elegant border ring */}
+          <div className="absolute inset-0 rounded-full border border-white/20 group-hover:border-white/40 transition-colors duration-700"></div>
         </button>
 
         {/* Footer text */}
