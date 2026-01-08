@@ -54,6 +54,8 @@ const LaunchPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center relative overflow-hidden">
+      {/* Enhanced background overlay for better contrast */}
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated gradient orbs */}
@@ -63,7 +65,7 @@ const LaunchPage = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
         {/* Main Title */}
         <h1 className="launch-title text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
           <span className="bg-gradient-to-r from-violet-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent">
@@ -79,20 +81,33 @@ const LaunchPage = () => {
         {/* Launch Button */}
         <button
           onClick={handleLaunch}
-          className="launch-button group relative inline-flex items-center justify-center px-12 py-6 text-2xl font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 rounded-2xl shadow-2xl hover:shadow-violet-500/25 transition-all duration-300 transform hover:scale-105 border-2 border-violet-400/30 hover:border-violet-400/50"
+          className="launch-button group relative inline-flex items-center justify-center px-16 py-8 text-2xl md:text-3xl font-bold text-white bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:via-purple-500 hover:to-indigo-500 rounded-3xl shadow-2xl hover:shadow-violet-500/50 hover:shadow-purple-500/30 transition-all duration-500 transform hover:scale-110 border-2 border-violet-300/50 hover:border-violet-200/80 animate-pulse hover:animate-none z-20"
+          style={{
+            background: 'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #6366f1 100%)',
+            boxShadow: '0 20px 40px rgba(139, 92, 246, 0.4), 0 10px 20px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+          }}
         >
-          {/* Button glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl blur opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+          {/* Enhanced glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400 rounded-3xl blur-xl opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
+
+          {/* Inner glow */}
+          <div className="absolute inset-1 bg-gradient-to-r from-white/20 to-transparent rounded-2xl"></div>
 
           {/* Button content */}
-          <span className="relative z-10 flex items-center gap-4">
-            <span>🚀</span>
-            <span>Launch Website</span>
-            <span>✨</span>
+          <span className="relative z-10 flex items-center gap-4 font-extrabold tracking-wide" role="button" aria-label="Launch Global Innovators Conclave Experience">
+            <span className="text-3xl md:text-4xl animate-bounce" aria-hidden="true">🚀</span>
+            <span className="drop-shadow-lg">Enter GIC 2026</span>
+            <span className="text-3xl md:text-4xl animate-pulse" aria-hidden="true">✨</span>
           </span>
 
-          {/* Animated border */}
-          <div className="absolute inset-0 rounded-2xl border-2 border-violet-400/30 animate-pulse"></div>
+          {/* Animated border with multiple layers */}
+          <div className="absolute inset-0 rounded-3xl border-2 border-violet-300/60 animate-pulse"></div>
+          <div className="absolute inset-1 rounded-2xl border border-white/30"></div>
+
+          {/* Sparkle effects */}
+          <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-300 rounded-full animate-ping opacity-75"></div>
+          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-blue-300 rounded-full animate-ping opacity-60 animation-delay-500"></div>
         </button>
 
         {/* Footer text */}

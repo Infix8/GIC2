@@ -150,7 +150,7 @@ const HeroSection = () => {
                 <h2
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left"
                   style={{
-                    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                    fontFamily: '"Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                     fontStyle: 'normal',
                     letterSpacing: '-0.02em',
                     lineHeight: '1.1',
@@ -194,7 +194,7 @@ const HeroSection = () => {
                   <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight w-full"
                     style={{
                       fontStyle: 'normal',
-                      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                      fontFamily: '"Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                       fontWeight: 700,
                     }}
                   >
@@ -214,7 +214,7 @@ const HeroSection = () => {
                   <p className="text-gic-lavender/80 text-base sm:text-lg lg:text-xl mt-4 leading-relaxed max-w-xs sm:max-w-md lg:max-w-xl xl:max-w-2xl w-full overflow-wrap-anywhere"
                     style={{
                       fontStyle: 'normal',
-                      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                      fontFamily: '"Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                       fontWeight: 400,
                       wordBreak: 'break-word',
                       overflowWrap: 'anywhere',
