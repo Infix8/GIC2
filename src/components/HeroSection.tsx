@@ -147,15 +147,15 @@ const HeroSection = () => {
                 >
                   <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white flex-shrink-0 transition-colors duration-300 group-hover:text-gic-lavender" />
                 </motion.div>
-                <h2 
+                <h2
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold whitespace-nowrap flex items-center"
                   style={{
-                    fontFamily: '"Playfair Display", "Cormorant Garamond", "Dancing Script", cursive, serif',
+                    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                     fontStyle: 'normal',
-                    letterSpacing: '0.02em',
-                    lineHeight: '1.1',
-                    fontWeight: 700,
-                    gap: '0.1875rem', // 25% reduction from 0.25rem (gap-1)
+                    letterSpacing: '-0.02em',
+                    lineHeight: '1.05',
+                    fontWeight: 800,
+                    gap: '0.25rem',
                   }}
                 >
                   {['Global', 'Innovators', 'Conclave', '2026'].map((word, index) => (
@@ -195,11 +195,12 @@ const HeroSection = () => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
                 >
-                  <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight italic"
+                  <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight"
                     style={{
-                      fontStyle: 'italic',
+                      fontStyle: 'normal',
                       transform: 'skewX(-8deg)',
-                      fontFamily: '"Playfair Display", "Cormorant Garamond", "Dancing Script", cursive, serif',
+                      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                      fontWeight: 700,
                     }}
                   >
                     <span 
@@ -214,11 +215,12 @@ const HeroSection = () => {
                       {slide.highlight}
                     </span>
                   </h1>
-                  <p className="text-gic-lavender/80 text-lg sm:text-xl mt-4 leading-relaxed max-w-xl italic"
+                  <p className="text-gic-lavender/80 text-lg sm:text-xl mt-4 leading-relaxed max-w-xl"
                     style={{
-                      fontStyle: 'italic',
+                      fontStyle: 'normal',
                       transform: 'skewX(-6deg)',
-                      fontFamily: '"Playfair Display", "Cormorant Garamond", "Dancing Script", cursive, serif',
+                      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                      fontWeight: 400,
                     }}
                   >
                     {slide.title}
