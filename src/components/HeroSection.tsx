@@ -470,21 +470,6 @@ const HeroSection = () => {
               </Link>
             </motion.div>
 
-            {/* Carousel Dots */}
-            <div className="flex gap-2 pt-6">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-500 ${
-                    index === currentSlide
-                      ? "w-10 bg-gradient-to-r from-gic-lavender via-gic-violet to-primary"
-                      : "w-2 bg-gic-violet/30 hover:bg-gic-lavender/60"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
           </div>
 
           {/* Right Content - Visual Element */}
