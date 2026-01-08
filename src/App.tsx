@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
 import PasswordReset from './components/PasswordReset';
 import ResetPassword from './components/ResetPassword';
 import VerifyEmail from './components/VerifyEmail';
@@ -21,7 +20,6 @@ import SpeakersPage from './pages/SpeakersPage';
 import SponsorsPage from './pages/SponsorsPage';
 import PassesPage from './pages/PassesPage';
 import AccommodationPage from './pages/AccommodationPage';
-import DashboardPage from './pages/DashboardPage';
 
 import './index.css';
 
@@ -87,11 +85,9 @@ const AppContent = () => {
               <Route path="/sponsors" element={<SponsorsPage />} />
               <Route path="/passes" element={<PassesPage />} />
               <Route path="/accommodation" element={<AccommodationPage />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-              
+
               {/* Auth Pages */}
               <Route path="/register" element={<RegisterForm />} />
-              <Route path="/login" element={<LoginForm />} />
               <Route path="/verify-email" element={<VerifyEmail />} />
               <Route path="/forgot-password" element={<PasswordReset />} />
               <Route path="/reset-password" element={<ResetPassword />} />
