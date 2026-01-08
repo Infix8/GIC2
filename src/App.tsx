@@ -117,7 +117,49 @@ function App() {
 
   return (
     <Router>
-      {loading && <Loader />}
+      {loading && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: '#0f0f23',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+          fontSize: '24px',
+          zIndex: 9999
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '48px', marginBottom: '20px' }}>🚀</div>
+            <div>Loading GIC 2026...</div>
+            <div style={{
+              width: '200px',
+              height: '4px',
+              backgroundColor: '#333',
+              marginTop: '20px',
+              borderRadius: '2px',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                height: '100%',
+                backgroundColor: '#8B7BB5',
+                borderRadius: '2px',
+                animation: 'loading-bar 2s ease-in-out infinite'
+              }}></div>
+            </div>
+          </div>
+          <style>{`
+            @keyframes loading-bar {
+              0% { width: 0%; }
+              50% { width: 100%; }
+              100% { width: 0%; }
+            }
+          `}</style>
+        </div>
+      )}
       {!loading && <AppContent />}
     </Router>
   );
