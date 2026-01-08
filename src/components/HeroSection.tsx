@@ -110,108 +110,53 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Animated floating circles - moving in different directions */}
-      {[...Array(20)].map((_, i) => {
-        // Random sizes between 3px and 8px
-        const size = 3 + Math.random() * 5;
-        // Random starting positions
-        const startX = Math.random() * 100;
-        const startY = Math.random() * 100;
-        // Random movement distances and directions
-        const moveX = (Math.random() - 0.5) * 200; // -100 to 100
-        const moveY = (Math.random() - 0.5) * 200; // -100 to 100
-        // Random duration between 8-15 seconds
-        const duration = 8 + Math.random() * 7;
-        // Random delay
-        const delay = Math.random() * 3;
-        // Random opacity variation
-        const baseOpacity = 0.2 + Math.random() * 0.3;
-        
-        // Different color variations
-        const colorVariants = [
-          'bg-gradient-to-br from-primary/40 to-gic-violet/50',
-          'bg-gradient-to-br from-gic-violet/35 to-primary/45',
-          'bg-gradient-to-br from-gic-lavender/30 to-gic-violet/40',
-          'bg-gradient-to-br from-primary/30 to-gic-lavender/35',
+      {/* Optimized: Reduced from 20+12 to just 6 floating circles */}
+      {[...Array(6)].map((_, i) => {
+        const size = 5 + Math.random() * 3; // Larger, more visible
+        const positions = [
+          { x: 15, y: 20 }, { x: 85, y: 15 }, { x: 20, y: 80 },
+          { x: 80, y: 85 }, { x: 45, y: 10 }, { x: 60, y: 90 }
         ];
-        const colorClass = colorVariants[i % colorVariants.length];
-        
+        const pos = positions[i];
+        const moveX = (Math.random() - 0.5) * 60; // Smaller movement
+        const moveY = (Math.random() - 0.5) * 60;
+        const duration = 15 + Math.random() * 10; // Slower, more consistent
+        const delay = i * 3; // Predictable delays
+
         return (
           <motion.div
             key={`floating-circle-${i}`}
-            className={`absolute ${colorClass} rounded-full blur-[0.5px]`}
+            className="absolute bg-gic-violet/20 rounded-full"
             style={{
               width: `${size}px`,
               height: `${size}px`,
-              left: `${startX}%`,
-              top: `${startY}%`,
-              boxShadow: `0 0 ${size * 2}px rgba(139, 123, 181, 0.4), 0 0 ${size * 3}px rgba(169, 155, 212, 0.2)`,
+              left: `${pos.x}%`,
+              top: `${pos.y}%`,
+              willChange: 'transform, opacity',
             }}
             animate={{
-              x: [0, moveX, moveX * 0.5, 0],
-              y: [0, moveY, moveY * 0.5, 0],
-              opacity: [baseOpacity, baseOpacity * 1.5, baseOpacity * 0.8, baseOpacity],
-              scale: [1, 1.15, 0.95, 1],
+              x: [0, moveX, 0],
+              y: [0, moveY, 0],
+              opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
               duration: duration,
               repeat: Infinity,
               delay: delay,
-              ease: [0.4, 0, 0.2, 1], // Custom smooth cubic-bezier
-              times: [0, 0.33, 0.66, 1],
-            }}
-          />
-        );
-      })}
-      
-      {/* Additional smaller circles with faster movement */}
-      {[...Array(12)].map((_, i) => {
-        const size = 2 + Math.random() * 3;
-        const startX = Math.random() * 100;
-        const startY = Math.random() * 100;
-        // Faster, more erratic movement
-        const moveX = (Math.random() - 0.5) * 150;
-        const moveY = (Math.random() - 0.5) * 150;
-        const duration = 5 + Math.random() * 4;
-        const delay = Math.random() * 2;
-        
-        return (
-          <motion.div
-            key={`small-circle-${i}`}
-            className="absolute rounded-full bg-gic-violet/25"
-            style={{
-              width: `${size}px`,
-              height: `${size}px`,
-              left: `${startX}%`,
-              top: `${startY}%`,
-              boxShadow: `0 0 ${size * 1.5}px rgba(169, 155, 212, 0.3)`,
-            }}
-            animate={{
-              x: [0, moveX, -moveX * 0.7, 0],
-              y: [0, moveY, -moveY * 0.7, 0],
-              opacity: [0.2, 0.45, 0.3, 0.2],
-              scale: [1, 1.2, 0.9, 1],
-            }}
-            transition={{
-              duration: duration,
-              repeat: Infinity,
-              delay: delay,
-              ease: [0.4, 0, 0.2, 1], // Custom smooth cubic-bezier
-              times: [0, 0.33, 0.66, 1],
+              ease: 'easeInOut',
             }}
           />
         );
       })}
 
-      {/* Revolving circles - positioned on left side, away from logo */}
-      {[...Array(6)].map((_, i) => {
-        // Position orbits on the left side to avoid logo area (logo is on right in desktop)
-        const centerX = isDesktop ? '25%' : '50%'; // Left side on desktop, center on mobile
-        const radius = 150 + (i % 3) * 120; // Different orbit radii: 150, 270, 390
-        const duration = 18 + (i % 3) * 8; // Varying speeds: 18s, 26s, 34s
-        const size = 4 + (i % 2) * 2; // Different sizes: 4px or 6px
-        const initialRotation = (i * 60) % 360; // Staggered starting positions
-        
+      {/* Optimized: Reduced from 6+4 to just 3 revolving circles */}
+      {[...Array(3)].map((_, i) => {
+        const centerX = isDesktop ? '20%' : '50%';
+        const radius = 120 + i * 80; // 120px, 200px, 280px
+        const duration = 20 + i * 10; // 20s, 30s, 40s
+        const size = 4 + i; // 4px, 5px, 6px
+        const direction = i % 2 === 0 ? 1 : -1; // Alternate directions
+
         return (
           <motion.div
             key={`orbit-${i}`}
@@ -220,61 +165,10 @@ const HeroSection = () => {
               left: centerX,
               width: `${radius * 2}px`,
               height: `${radius * 2}px`,
-              transform: `translate(-50%, -50%) rotate(${initialRotation}deg)`,
+              willChange: 'transform',
             }}
             animate={{
-              rotate: 360 + initialRotation,
-            }}
-            transition={{
-              duration: duration,
-              repeat: Infinity,
-              ease: [0.25, 0.1, 0.25, 1], // Smooth linear-like curve
-            }}
-          >
-            <motion.div
-              className="absolute rounded-full bg-gradient-to-br from-primary/50 to-gic-violet/60"
-              style={{
-                width: `${size}px`,
-                height: `${size}px`,
-                top: '0%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                boxShadow: '0 0 10px rgba(139, 123, 181, 0.5), 0 0 20px rgba(169, 155, 212, 0.3)',
-              }}
-              animate={{
-                opacity: [0.4, 0.65, 0.4],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 3 + (i % 2) * 0.5,
-                repeat: Infinity,
-                ease: [0.4, 0, 0.2, 1], // Smooth cubic-bezier
-                times: [0, 0.5, 1],
-              }}
-            />
-          </motion.div>
-        );
-      })}
-
-      {/* Smaller revolving circles - counter-clockwise, left side only */}
-      {[...Array(4)].map((_, i) => {
-        const centerX = isDesktop ? '25%' : '50%';
-        const radius = 80 + (i % 2) * 60; // 80px or 140px
-        const duration = 12 + (i % 2) * 6; // 12s or 18s
-        const initialRotation = (i * 90) % 360;
-        
-        return (
-          <motion.div
-            key={`close-orbit-${i}`}
-            className="absolute top-1/2 hidden lg:block"
-            style={{
-              left: centerX,
-              width: `${radius * 2}px`,
-              height: `${radius * 2}px`,
-              transform: `translate(-50%, -50%) rotate(${initialRotation}deg)`,
-            }}
-            animate={{
-              rotate: -360 + initialRotation,
+              rotate: direction * 360,
             }}
             transition={{
               duration: duration,
@@ -282,23 +176,14 @@ const HeroSection = () => {
               ease: 'linear',
             }}
           >
-            <motion.div
-              className="absolute w-2.5 h-2.5 rounded-full bg-gic-violet/60"
+            <div
+              className="absolute rounded-full bg-gic-violet/30"
               style={{
+                width: `${size}px`,
+                height: `${size}px`,
                 top: '0%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                boxShadow: '0 0 8px rgba(169, 155, 212, 0.6), 0 0 15px rgba(139, 123, 181, 0.3)',
-              }}
-              animate={{
-                opacity: [0.5, 0.75, 0.5],
-                scale: [1, 1.12, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: [0.4, 0, 0.2, 1], // Smooth cubic-bezier
-                times: [0, 0.5, 1],
               }}
             />
           </motion.div>
