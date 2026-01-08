@@ -20,6 +20,7 @@ import SpeakersPage from './pages/SpeakersPage';
 import SponsorsPage from './pages/SponsorsPage';
 import PassesPage from './pages/PassesPage';
 import AccommodationPage from './pages/AccommodationPage';
+import LaunchPage from './pages/LaunchPage';
 
 import './index.css';
 
@@ -79,6 +80,7 @@ const AppContent = () => {
             <Routes>
               {/* Main Pages */}
               <Route path="/" element={<Home />} />
+              <Route path="/launch" element={<LaunchPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/speakers" element={<SpeakersPage />} />
