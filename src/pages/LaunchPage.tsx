@@ -62,39 +62,42 @@ const LaunchPage = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Main Title */}
-        <h1 className="launch-title text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
+        <h1 className="launch-title text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
           <span className="bg-gradient-to-r from-violet-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent">
-            LAUNCH
+            GIC 2026
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="launch-subtitle text-xl md:text-2xl text-violet-200/80 mb-12 font-light leading-relaxed">
-          Welcome to the Global Innovators Conclave 2026
+        <p className="launch-subtitle text-lg md:text-xl text-violet-200/70 mb-16 font-light leading-relaxed max-w-md text-center">
+          Global Innovators Conclave
         </p>
 
         {/* Launch Button */}
         <button
           onClick={handleLaunch}
-          className="launch-button group relative inline-flex items-center justify-center px-12 py-6 text-2xl font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 rounded-2xl shadow-2xl hover:shadow-violet-500/25 transition-all duration-300 transform hover:scale-105 border-2 border-violet-400/30 hover:border-violet-400/50"
+          className="launch-button group relative inline-flex items-center justify-center px-16 py-8 text-2xl md:text-3xl font-bold text-white bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:via-purple-500 hover:to-indigo-500 rounded-full shadow-2xl hover:shadow-violet-500/30 transition-all duration-500 transform hover:scale-105 border-0"
+          style={{
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.95) 0%, rgba(168, 85, 247, 0.97) 50%, rgba(139, 92, 246, 0.95) 100%)',
+            boxShadow: '0 20px 40px rgba(139, 92, 246, 0.5), 0 10px 20px rgba(168, 85, 247, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.2)',
+            textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
+          }}
         >
-          {/* Button glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl blur opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+          {/* Subtle glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-400/30 via-purple-400/40 to-indigo-400/30 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
 
           {/* Button content */}
-          <span className="relative z-10 flex items-center gap-4">
-            <span>🚀</span>
-            <span>Launch Website</span>
-            <span>✨</span>
+          <span className="relative z-10 flex items-center font-extrabold tracking-wide" role="button" aria-label="Launch GIC 2026">
+            <span className="text-2xl md:text-3xl">Launch</span>
           </span>
 
-          {/* Animated border */}
-          <div className="absolute inset-0 rounded-2xl border-2 border-violet-400/30 animate-pulse"></div>
+          {/* Elegant border ring */}
+          <div className="absolute inset-0 rounded-full border border-white/30 group-hover:border-white/50 transition-colors duration-500"></div>
         </button>
 
         {/* Footer text */}
-        <p className="mt-12 text-violet-300/60 text-sm">
-          Experience the future of innovation
+        <p className="mt-12 text-violet-300/50 text-sm font-light tracking-wide">
+          Global Innovation Starts Here
         </p>
       </div>
 
